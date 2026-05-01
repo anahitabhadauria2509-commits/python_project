@@ -3,6 +3,7 @@ from tkinter import ttk, messagebox
 import pandas as pd
 import os
 import matplotlib.pyplot as plt
+from pymongo import MongoClient
 
 
 class CareerPathApp:
@@ -10,7 +11,12 @@ class CareerPathApp:
         self.root = root
         self.root.title("🚀 CareerPath: Professional Future Advisor")
         self.root.geometry("1280x780")
-        
+
+         # MongoDB (structure only)
+        self.client = MongoClient("mongodb://localhost:27017/")
+        self.db = self.client["career_path"]
+        self.collection = self.db["colleges"]
+
         # --- UI COLORS ---
         self.bg_dark = "#121212"       
         self.card_bg = "#1e1e1e"       
